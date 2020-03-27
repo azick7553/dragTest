@@ -69,9 +69,20 @@ function getLink(req, res, next) {
 }
 function createLink(req, res, next) {
     // req.body.age = parseInt(req.body.age);
-    db.none('insert into links(title, url, navigation_id)' +
-        'values(${title}, ${url}, 1)',
-        req.body)
+    
+    //; SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+    
+    db.result(`do $$
+begin
+  IF ((select count(*) from links where navigation_id=1) < 5)
+  THEN 
+  INSERT INTO links(title, url, navigation_id) VALUES('${req.body.title}', '${req.body.url}', 1);
+  ELSE RAISE EXCEPTION 'You reached limit links(5)';
+  END IF; 
+end
+    $$
+    `,req.body
+        )
         .then(function () {
             res.status(200)
                 .json({
