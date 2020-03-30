@@ -7,6 +7,7 @@ CREATE TABLE links (
   ID SERIAL PRIMARY KEY,
   title VARCHAR(45),
   url VARCHAR,
+  current_position SMALLINT,
   navigation_id SMALLINT
 );
 CREATE TABLE navigation (

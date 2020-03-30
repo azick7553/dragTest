@@ -1,0 +1,157 @@
+
+#navigation{
+  position: relative;
+width: 436px;
+height: 722px;
+
+background: #FFFFFF;
+}
+#zonee{
+position: absolute;
+left: 1.38%;
+right: 1.38%;
+top: 0.83%;
+bottom: 73.82%;
+}
+.Rectangle{
+  position: relative;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+background: #F5F5F5;
+border: 1px solid #DEDEDE;
+}
+.bg{
+
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+background: #DEDEDE;
+}
+.bg-text{
+  /* position: absolute; */
+width: 72px;
+height: 18px;
+padding-left: 6px;
+padding-top: 6.6px;
+
+font-family: SF Pro Text;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height, or 129% */
+
+
+color: rgba(0, 0, 0, 0.85);
+
+}
+.bg-text-add{
+position: absolute;
+width: 42px;
+height: 18px;
+right: 6px;
+top: 6.6px;
+
+font-family: SF Pro Text;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height, or 129% */
+
+text-align: right;
+
+color: #0067F7;
+}
+.card-bg{
+/* position: absolute; */
+left: 12px;
+right: 12px;
+top: 144px;
+bottom: 542px;
+
+background: #FFFFFF;
+border: 1px solid rgba(0, 0, 0, 0.3);
+box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13);
+border-radius: 1px;
+
+}
+.card-package{
+/* position: absolute; */
+left: 2.75%;
+right: 2.75%;
+top: 46.81%;
+bottom: 48.2%;
+display: flex;
+justify-content: space-between;
+}
+
+.name{
+/* position: absolute; */
+padding-left: 12px;
+right: 24px;
+top: 7.48%;
+bottom: 89.2%;
+
+font-family: SF Pro Text;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+
+display: flex;
+align-items: center;
+
+color: rgba(0, 0, 0, 0.85);
+
+}
+.btn-edit{
+  left: 0px;
+}
+.btn-edit{
+/* position: absolute; */
+width: 36px;
+height: 36px;
+right: 12px;
+/* bottom: 638px; */
+}
+.btn-edit-bg{
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+
+background: rgba(255, 255, 255, 0.5);
+border-radius: 1px;
+} 
+.group7{
+  /* position: absolute; */
+/* width: 412px; */
+/* height: 36px; */
+margin: 8px 6px;
+/* top: 96px; */
+}
+.group6{
+position: absolute;
+left: 42.2%;
+right: 2.75%;
+top: 18.7%;
+bottom: 68.01%;
+
+}
+#group-edit-del{
+  /* margin-top: 30px; */
+position: absolute;
+right:5px;
+}
+.group-edit-del-btn{
+  
+
+left: 184px;
+right: 12px;
+top: 141px; 
+bottom: 545px;
+background-color: #FFFFFF;
+
+}
