@@ -71,37 +71,61 @@ function createLink(req, res, next) {
     // req.body.age = parseInt(req.body.age);
     
     //; SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-    
-    db.result(`do $$
-begin
-  IF ((select count(*) from links where navigation_id=1) < 5)
-  THEN 
-  INSERT INTO links(title, url, navigation_id) VALUES('${req.body.title}', '${req.body.url}', 1);
-  ELSE RAISE EXCEPTION 'You reached limit links(5)';
-  END IF; 
-end
-    $$
-    `,req.body
-        )
-        .then(function () {
-            res.status(200)
-                .json({
-                    status: 'success',
-                    message: 'Inserted one link'
-                });
-        })
-        .catch(function (err) {
-            return next(err);
-        });
+    let countRows;
+    db.any('select count(*) from links where navigation_id=1')
+        .then(function (data) {
+            countRows = parseInt(data[0]['count'])
+            if(countRows<5){
+                db.any(`INSERT INTO links(title, url, navigation_id) VALUES('${req.body.title}', '${req.body.url}', ${req.body.navigation_id}) RETURNING *;`
+                , req.body
+                )
+                    .then(function (data) {
+                        res.status(200)
+                            .json({
+                                status: 'success',
+                                data: data[0],
+                                message: 'Inserted one link'
+                            });
+                        console.log(data[0])
+                    })
+                    .catch(function (err) {
+                        return next(err);
+                    });
+            }
+            else{
+               
+                    res.json({
+                        status: 'error',
+                        data: data[0],
+                        message: 'Links limit reached!'
+                    })
+                
+            }
+                
+                        
+                       
+                  
+               
+           
+            } 
+            )
+       
+
+   
 }
 function updateLink(req, res, next) {
-    db.none('update links set title=$1, url=$2, navigation_id=1 where id=$3',
-        [req.body.title, req.body.url,
+    let key = Object.keys(req.body)[0];
+   
+    let val = req.body[Object.keys(req.body)[0]]
+    console.log(val)
+    db.one(`update links set ${key}='${val}' where id=$1 RETURNING *`,
+        [
         parseInt(req.params.id)])
-        .then(function () {
+        .then(function (data) {
             res.status(200)
                 .json({
                     status: 'success',
+                    data: data,
                     message: 'Updated link'
                 });
         })
