@@ -76,7 +76,7 @@ function createLink(req, res, next) {
         .then(function (data) {
             countRows = parseInt(data[0]['count'])
             if(countRows<5){
-                db.any(`INSERT INTO links(title, url, navigation_id) VALUES('${req.body.title}', '${req.body.url}', ${req.body.navigation_id}) RETURNING *;`
+                db.any(`INSERT INTO links(title, url, current_position, navigation_id) VALUES('${req.body.title}', '${req.body.url}', ${req.body.current_position}, ${req.body.navigation_id}) RETURNING *;`
                 , req.body
                 )
                     .then(function (data) {
