@@ -30,10 +30,43 @@ function App() {
       .then(res => res.json())
       .then(res => setNavigation(res.data))
   },[]);
+  
+  let createLinkHendler=()=>{
+    fetch('http://localhost:3000/api/links',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: '',
+        url: '',
+        current_postion: navigation.length+1,
+        navigation_id: 1
+      })
+    })
+    .then(res => res.json())
+    .then((data)=>{
+      console.log(data)
+      if(data.status!=='error'){
+        setNavigation([...navigation, data.data])
+      }
+      
+    })
+  }
+  const deleteLinkHendler=(id)=>{
+ let links = navigation.filter(nav => nav.id != id); 
+ setNavigation(links)
+  }
+  const updatedLinkHendler = (link) => {
+    let newLinks = navigation.filter(nav => nav.id != link.id);
+    newLinks.push(link)
+    setNavigation(newLinks)
+  }
   return (
     <Navigation 
     navigation={navigation}
-    node={node}
+    createLinkHendler={createLinkHendler}
+      deleteLinkHendler={deleteLinkHendler}
+      updatedLinkHendler={updatedLinkHendler}
    />
     ) 
 }

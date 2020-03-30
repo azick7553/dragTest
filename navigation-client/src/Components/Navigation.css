@@ -105,8 +105,13 @@ align-items: center;
 color: rgba(0, 0, 0, 0.85);
 
 }
-.btn-edit{
-  left: 0px;
+.btn-edit-bg:active{
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+background: #DEDEDE;
+border-radius: 1px;
 }
 .btn-edit{
 /* position: absolute; */
@@ -125,6 +130,7 @@ bottom: 0px;
 background: rgba(255, 255, 255, 0.5);
 border-radius: 1px;
 } 
+
 .group7{
   /* position: absolute; */
 /* width: 412px; */
@@ -154,4 +160,63 @@ top: 141px;
 bottom: 545px;
 background-color: #FFFFFF;
 
+}
+.form-group-col{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.form-group-row{
+  display: flex;
+  flex-direction: row;
+ 
+}
+form{
+   left: 12px;
+right: 12px;
+top: 387px;
+bottom: 168px;
+
+background: #FFFFFF;
+border: 1px solid rgba(0, 0, 0, 0.3);
+box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13);
+border-radius: 1px;
+  
+}
+form input{
+  height: 36px;
+left: 72px;
+right: 21px;
+top: 427px;
+
+background: #FFFFFF;
+border: 2px solid #0067F7;
+box-sizing: border-box;
+
+}
+form label{
+ 
+height: 24px;
+left: 16.51%;
+right: 57.18%;
+top: 397px;
+
+font-family: SF Pro Text;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+
+display: flex;
+align-items: center;
+
+color: rgba(0, 0, 0, 0.85);
+}
+.btn-back{
+  left: 24px;
+right: 376px;
+top: 397px;
+bottom: 181px;
+
+background: #DEDEDE;
+border-radius: 1px;
 }
